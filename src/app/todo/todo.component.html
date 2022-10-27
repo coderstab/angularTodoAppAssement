@@ -1,0 +1,31 @@
+<div class="container-fluid">
+       <div class="row">
+            <div class="col-md-4" style="background-color: rgb(244, 244, 244);height:100vh">
+
+                <form [formGroup]="form" class="todForm" >
+                    <mat-form-field class="example-full-width" appearance="fill">
+                      <mat-label>Daily Task Input Field</mat-label>
+                      <input formControlName="item" matInput placeholder="Angular Task" value="task">
+                    </mat-form-field>
+                    <div>
+                       <button *ngIf="!isEditEnabled" (click)="addTask()" mat-raised-button color="primary">Add Task + </button>
+                       <button *ngIf="isEditEnabled"  (click)="updateTask()" mat-raised-button color="accent">Updated Task </button>
+                    </div>
+                  </form>
+              
+
+            </div>
+            <div class="col-md-8" style="background-color: rgb(255, 255, 255);height:100vh">
+                 
+                <mat-list *ngFor="let item of task; let i = index;" >
+                    <mat-list-item>{{item.description}}
+                          <div class="box" style="margin-left:20px;">
+                                 <button mat-icon-button (click)="deleteTask(i)" style="background-color: red;color:#fff;margin:5px;">Delete</button>
+                                 <button mat-icon-button (click)="editTask(item,i)" style="background-color: blue;color:#fff;margin:5px;">Edit</button>
+                          </div>
+                    </mat-list-item>
+                  </mat-list>
+                
+            </div>
+       </div>
+</div>
